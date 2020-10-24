@@ -1,0 +1,32 @@
+server:
+  port: 10001
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useSSL=false
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis: # 配置redis
+    host: 192.168.109.128
+    port: 6379
+  boot:
+    admin:
+      client:
+        url: http://localhost:8769   # 指定注册地址 , Spring Boot Admin Server地址
+
+
+mybatis:
+  type-aliases-package: com.atguigu.pojo
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # 对外暴露的访问入口 , 默认是/health和/info
+      base-path: /monitor # 默认是actuator
+  endpoint:
+    health:
+      show-details: ALWAYS	# 显示所有健康状态
+  server:
+    port: 9999
